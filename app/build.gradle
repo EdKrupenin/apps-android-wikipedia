@@ -40,7 +40,7 @@ android {
         targetSdk 35
         versionCode 50517
         testApplicationId 'org.wikipedia.test'
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.kaspersky.kaspresso.runner.KaspressoRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
 
         vectorDrawables.useSupportLibrary = true
@@ -257,12 +257,13 @@ dependencies {
     testImplementation libs.hamcrest
     testImplementation libs.room.testing
 
-    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.kaspresso
     androidTestImplementation libs.espresso.contrib
+    //Предлагаю пока что оставить эту зависимость иначе проект не собирается, надо пределывать тсты:
+    //BaseTest.kt MediaRobot.kt PageActionItemRobot.kt PageRobot.kt
     androidTestImplementation libs.androidx.espresso.intents
     androidTestImplementation libs.espresso.web
     androidTestImplementation libs.androidx.junit
-    androidTestImplementation libs.androidx.uiautomator
     androidTestImplementation libs.room.testing
     androidTestUtil libs.androidx.orchestrator
 
