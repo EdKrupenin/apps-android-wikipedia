@@ -11,7 +11,6 @@ import org.wikipedia.R
 class NewsCardViewItem(matcher: Matcher<View>) : KRecyclerItem<NewsCardViewItem>(matcher) {
     val headerText = KTextView(matcher){
         withId(R.id.view_card_header_title)
-        withText(R.string.view_card_news_title)
     }
     val headerMenu = KImageView(matcher) {
         withId(R.id.view_list_card_header_menu)
