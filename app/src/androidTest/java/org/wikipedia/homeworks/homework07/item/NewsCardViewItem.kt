@@ -18,7 +18,6 @@ class NewsCardViewItem(matcher: Matcher<View>) : KRecyclerItem<NewsCardViewItem>
     }
 
     val newsCardItems = KRecyclerView(
-        parent = matcher,
         builder = {
             withId(R.id.news_cardview_recycler_view)
         },
