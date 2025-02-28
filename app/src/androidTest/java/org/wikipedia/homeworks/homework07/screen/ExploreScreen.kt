@@ -10,6 +10,7 @@ import org.wikipedia.homeworks.homework07.item.DayHeaderCardViewItem
 import org.wikipedia.homeworks.homework07.item.NewsCardViewItem
 import org.wikipedia.homeworks.homework07.item.SearchCardViewItem
 import org.wikipedia.homeworks.homework07.item.TopReadCardViewItem
+import org.wikipedia.homeworks.homework09.items.InTheNewsViewItem
 
 object ExploreScreen : KScreen<ExploreScreen>() {
     override val layoutId = R.layout.fragment_feed
@@ -29,6 +30,7 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::DayHeaderCardViewItem)
             itemType(::TopReadCardViewItem)
             itemType(::NewsCardViewItem)
+            itemType(::InTheNewsViewItem)
         }
     )
 }
