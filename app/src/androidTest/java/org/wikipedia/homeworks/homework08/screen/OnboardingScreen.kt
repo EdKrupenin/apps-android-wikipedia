@@ -1,11 +1,11 @@
-package org.wikipedia.homeworks.homeworks08.screen
+package org.wikipedia.homeworks.homework08.screen
 
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.pager2.KViewPager2
 import io.github.kakaocup.kakao.tabs.KTabLayout
 import io.github.kakaocup.kakao.text.KButton
 import org.wikipedia.R
-import org.wikipedia.homeworks.homeworks08.items.OnboardingPageItem
+import org.wikipedia.homeworks.homework08.items.OnboardingPageItem
 
 object OnboardingScreen : KScreen<OnboardingScreen>() {
     override val layoutId: Int? = null

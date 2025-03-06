@@ -1,4 +1,4 @@
-package org.wikipedia.homeworks.homeworks08.matcher
+package org.wikipedia.homeworks.homework08.matcher
 
 import android.view.View
 import com.google.android.material.tabs.TabLayout

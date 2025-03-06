@@ -10,7 +10,7 @@ import org.wikipedia.homeworks.homework09.items.InTheNewsViewItem
 import org.wikipedia.homeworks.homework09.items.subitems.TabNewsItemView
 import org.wikipedia.homeworks.homework09.screen.ArticlesScreen
 import org.wikipedia.homeworks.homework09.screen.WebViewScreen
-import org.wikipedia.homeworks.homeworks08.screen.OnboardingScreen
+import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
 import org.wikipedia.main.MainActivity
 
 const val EXPLORE_SCREEN_ITEM = 3
