@@ -44,3 +44,4 @@ device*.png
 
 # Log Files
 *.log
+/adbserver-desktop.jar
