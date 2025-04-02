@@ -5,6 +5,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
+import org.wikipedia.homeworks.AllureSupportTest
 import org.wikipedia.homeworks.homework07.item.ListCardItemViewItem
 import org.wikipedia.homeworks.homework07.screen.ExploreScreen
 import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
@@ -19,7 +20,7 @@ import org.wikipedia.homeworks.homework13.screens.BottomSheetScreen
 import org.wikipedia.homeworks.homework13.screens.LinkPreviewOverlayScreen
 import org.wikipedia.main.MainActivity
 
-class WebViewTest : TestCase() {
+class WebViewTest : AllureSupportTest() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 

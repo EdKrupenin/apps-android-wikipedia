@@ -5,12 +5,13 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.R
+import org.wikipedia.homeworks.AllureSupportTest
 import org.wikipedia.homeworks.homework08.items.OnboardingPageItem
 import org.wikipedia.homeworks.homework08.matcher.hasSelectedTabAt
 import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
 import org.wikipedia.main.MainActivity
 
-class OnboardingScreenTest : TestCase() {
+class OnboardingScreenTest : AllureSupportTest() {
 
     @get:Rule
     val activityScenarioRule : ActivityScenarioRule<MainActivity> =

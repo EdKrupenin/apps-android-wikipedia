@@ -258,6 +258,7 @@ dependencies {
     testImplementation libs.room.testing
 
     androidTestImplementation libs.kaspresso
+    androidTestImplementation libs.kaspresso.allure.support
     androidTestImplementation libs.espresso.contrib
     //Предлагаю пока что оставить эту зависимость иначе проект не собирается, надо пределывать тсты:
     //BaseTest.kt MediaRobot.kt PageActionItemRobot.kt PageRobot.kt
@@ -301,4 +302,55 @@ private static Properties loadProperties(File file) {
         System.err.println "\"${file}\" not found"
     }
     return props
+}
+
+// В файле build.gradle (уровня модуля или проекта)
+tasks.register("pullAllureResults") {
+    group = "verification"
+    description = "Pulls allure-results from device to app/build"
+    doLast {
+        def targetDir = file("build/allure-results")
+        if (targetDir.exists()) {
+            println "Deleting old allure-results in: ${targetDir.absolutePath}"
+            delete targetDir
+        }
+        exec {
+            commandLine "adb", "pull", "/sdcard/Documents/allure-results", "build"
+        }
+    }
+}
+
+// Автоматическое выполнение после тасок, содержащих "connected"
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+    if (task.name.toLowerCase().startsWith("connected") && task.name.toLowerCase().endsWith("androidtest")) {
+        def allureTask = tasks.named("pullAllureResults").get()
+        println "Connected task finished: ${task.name}, running pullAllureResults..."
+        allureTask.actions.each { action ->
+            action.execute(allureTask)
+        }
+    }
+}
+
+tasks.register("clearDeviceAllureResults") {
+    group = "verification"
+    description = "Clears allure-results directory on Android device"
+
+    doLast {
+        def adbCommand = ["adb", "shell", "rm", "-rf", "/sdcard/Documents/allure-results"]
+        println "Running: ${adbCommand.join(' ')}"
+        exec {
+            commandLine adbCommand
+        }
+    }
+}
+
+// Гарантированно срабатывает перед connected-тасками
+gradle.taskGraph.beforeTask { Task task ->
+    if (task.name.toLowerCase().startsWith("connected") && task.name.toLowerCase().endsWith("androidtest")) {
+        def clearTask = tasks.named("clearDeviceAllureResults").get()
+        println "Connected task starting: ${task.name}, running clearDeviceAllureResults first..."
+        clearTask.actions.each { action ->
+            action.execute(clearTask)
+        }
+    }
 }

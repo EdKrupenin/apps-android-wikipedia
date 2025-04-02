@@ -4,6 +4,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
+import org.wikipedia.homeworks.AllureSupportTest
 import org.wikipedia.homeworks.homework07.item.ListCardItemViewItem
 import org.wikipedia.homeworks.homework07.screen.ExploreScreen
 import org.wikipedia.homeworks.homework09.items.InTheNewsViewItem
@@ -16,7 +17,7 @@ import org.wikipedia.main.MainActivity
 const val EXPLORE_SCREEN_ITEM = 3
 const val ARTICLES_SCREEN_ITEM = 1
 
-class FirstEndToEndTest : TestCase() {
+class FirstEndToEndTest : AllureSupportTest() {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 

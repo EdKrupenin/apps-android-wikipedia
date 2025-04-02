@@ -5,6 +5,7 @@ import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
+import org.wikipedia.homeworks.AllureSupportTest
 import org.wikipedia.homeworks.homework07.item.ListCardItemViewItem
 import org.wikipedia.homeworks.homework07.screen.ExploreScreen
 import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
@@ -18,7 +19,7 @@ import org.wikipedia.homeworks.homework11.screen.ErrorScreen
 import org.wikipedia.main.MainActivity
 import java.util.Locale
 
-class AppDeviceTest : TestCase() {
+class AppDeviceTest : AllureSupportTest() {
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
