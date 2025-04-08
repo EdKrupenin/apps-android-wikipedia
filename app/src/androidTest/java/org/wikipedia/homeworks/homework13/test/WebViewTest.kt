@@ -1,5 +1,6 @@
 package org.wikipedia.homeworks.homework13.test
 
+import androidx.compose.ui.test.hasText
 import androidx.test.espresso.web.webdriver.Locator
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
@@ -19,6 +20,7 @@ import org.wikipedia.homeworks.homework13.items.ReferencePageItem
 import org.wikipedia.homeworks.homework13.screens.BottomSheetScreen
 import org.wikipedia.homeworks.homework13.screens.LinkPreviewOverlayScreen
 import org.wikipedia.main.MainActivity
+import org.wikipedia.homeworks.homework19.actions
 
 class WebViewTest : AllureSupportTest() {
     @get:Rule
@@ -39,6 +41,7 @@ class WebViewTest : AllureSupportTest() {
                     items.childAt<TabNewsItemView>(EXPLORE_SCREEN_ITEM) {
                         step("Click to item") {
                             click()
+                            hasText("")
                         }
                     }
                 }

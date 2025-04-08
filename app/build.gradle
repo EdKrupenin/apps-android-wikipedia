@@ -304,6 +304,8 @@ private static Properties loadProperties(File file) {
     return props
 }
 
+def adbPath = "${android.sdkDirectory}/platform-tools/adb"
+
 // В файле build.gradle (уровня модуля или проекта)
 tasks.register("pullAllureResults") {
     group = "verification"
@@ -315,7 +317,7 @@ tasks.register("pullAllureResults") {
             delete targetDir
         }
         exec {
-            commandLine "adb", "pull", "/sdcard/Documents/allure-results", "build"
+            commandLine adbPath, "pull", "/sdcard/Documents/allure-results", "build"
         }
     }
 }
@@ -334,9 +336,8 @@ gradle.taskGraph.afterTask { Task task, TaskState state ->
 tasks.register("clearDeviceAllureResults") {
     group = "verification"
     description = "Clears allure-results directory on Android device"
-
     doLast {
-        def adbCommand = ["adb", "shell", "rm", "-rf", "/sdcard/Documents/allure-results"]
+        def adbCommand = [adbPath, "shell", "rm", "-rf", "/sdcard/Documents/allure-results"]
         println "Running: ${adbCommand.join(' ')}"
         exec {
             commandLine adbCommand
