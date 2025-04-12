@@ -6,24 +6,25 @@ import io.github.kakaocup.kakao.check.CheckableActions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.web.WebActions
+import org.wikipedia.homeworks.homework20.tools.name
 
-class Action(testContext: TestContext<*>) : Steps<Action>(testContext) {
+class Action(private val testContext: TestContext<*>) : Steps<Action>(testContext) {
 
-    fun click(item: BaseActions, name: String) {
-        execute("Click on '$name'") {
+    fun click(item: BaseActions) {
+        execute("Click on '${item.name()}'") {
             item.click()
         }
     }
 
-    fun click(item: WebActions, name: String) {
-        execute("Click on '$name'") {
+    fun click(item: WebActions) {
+        execute("Click on '${(item as BaseActions).name()}'") {
             item.click()
         }
     }
 
-    fun disableNetwork(device: Device) {
+    fun disableNetwork() {
         execute("Disable network") {
-            device.network.disable()
+            testContext.device.network.disable()
         }
     }
 
@@ -34,39 +35,39 @@ class Action(testContext: TestContext<*>) : Steps<Action>(testContext) {
     }
 
     fun typeText(
-        item: EditableActions, text: String, name: String
+        item: EditableActions, text: String
     ) {
-        execute("type text:'$text' into '$name'") {
+        execute("type text:'$text' into '$${item.name()}'") {
             item.typeText(text)
         }
     }
 
-    fun setChecked(item: CheckableActions, checked: Boolean, name: String) {
-        execute("Set checked state is $checked into $name") {
+    fun setChecked(item: CheckableActions, checked: Boolean) {
+        execute("Set checked state is $checked into ${item.name()}") {
             item.setChecked(checked)
         }
     }
 
-    fun setOrientationLeft(device: Device) {
+    fun setOrientationLeft() {
         execute("Set orientation left") {
-            device.uiDevice.setOrientationLeft()
+            testContext.device.uiDevice.setOrientationLeft()
         }
     }
 
-    fun setOrientationNatural(device: Device) {
+    fun setOrientationNatural() {
         execute("Set orientation natural") {
-            device.uiDevice.setOrientationNatural()
+            testContext.device.uiDevice.setOrientationNatural()
         }
     }
 
-    fun setOrientationRight(device: Device) {
+    fun setOrientationRight() {
         execute("Set orientation right") {
-            device.uiDevice.setOrientationRight()
+            testContext.device.uiDevice.setOrientationRight()
         }
     }
 
-    fun scroll(item: WebActions, name: String) {
-        execute("Scroll '$name'") {
+    fun scroll(item: WebActions) {
+        execute("Scroll '${(item as BaseActions).name()}'") {
             item.scroll()
         }
     }

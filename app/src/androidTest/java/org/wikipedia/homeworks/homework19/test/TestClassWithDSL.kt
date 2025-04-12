@@ -28,7 +28,7 @@ class TestClassWithDSL : AllureSupportTest() {
     fun testWebView() = run {
 
         actions {
-            click(OnboardingScreen.skipBtn, "btn Skip")
+            click(OnboardingScreen.skipBtn)
             step("Find In The News block and click to $EXPLORE_SCREEN_ITEM item") {
                 ExploreScreen.items.childWith<InTheNewsViewItem> {
                     withDescendant {
@@ -37,21 +37,21 @@ class TestClassWithDSL : AllureSupportTest() {
                 }.perform {
                     step("Swipe to $EXPLORE_SCREEN_ITEM item") {
                         items.childAt<TabNewsItemView>(EXPLORE_SCREEN_ITEM) {
-                            click(this, "to $EXPLORE_SCREEN_ITEM item of TabNews")
+                            click(this)
                         }
                     }
                 }
             }
             step("Find $ARTICLES_SCREEN_ITEM article") {
                 ArticlesScreen.items.childAt<ListCardItemViewItem>(ARTICLES_SCREEN_ITEM) {
-                    click(this, "to $ARTICLES_SCREEN_ITEM item of article")
+                    click(this)
                 }
             }
             step("Scroll to reference Id element") {
                 flakySafely(150000) {
                     WebViewScreen.realWebView {
                         withElement(Locator.XPATH, "//*[@id='References']") {
-                            scroll(this, "to References")
+                            scroll(this)
                         }
                     }
                 }
@@ -59,15 +59,15 @@ class TestClassWithDSL : AllureSupportTest() {
         }
         WebViewScreen.realWebView {
             withElement(Locator.XPATH, "//*[@id='References']") {
-                checks.hasText(this, "References", "Check References text")
+                checks.hasText(this, "References")
             }
         }
 
         step("Check References text") {
             WebViewScreen.realWebView {
                 withElement(Locator.XPATH, "//*[@id='References']") {
-                    checks.hasText(this, "References", "Check References text")
-                    actions.click(this, "Click to References")
+                    checks.hasText(this, "References")
+                    actions.click(this)
                 }
             }
         }
@@ -75,12 +75,12 @@ class TestClassWithDSL : AllureSupportTest() {
             flakySafely(150000) {
                 WebViewScreen.realWebView {
                     withElement(Locator.XPATH, "//*[@id='back_link_cite_note-dbm-9']") {
-                        actions.scroll(this, "to References")
-                        checks.hasText(this, "[5]", "Check references text")
-                        actions.click(this, "to References")
+                        actions.scroll(this)
+                        checks.hasText(this, "[5]")
+                        actions.click(this)
                     }
                     withElement(Locator.XPATH, "//*[@id='cite_ref-dbm_9-0']/a") {
-                        actions.click(this, "to References")
+                        actions.click(this)
                     }
                 }
             }
@@ -90,16 +90,16 @@ class TestClassWithDSL : AllureSupportTest() {
     @Test
     fun orientationTest() = run {
         actions {
-            click(OnboardingScreen.skipBtn, "btn Skip")
-            setOrientationLeft(device)
+            click(OnboardingScreen.skipBtn)
+            setOrientationLeft()
             sleep(5000)
         }
-        checks.isNotOrientationNatural(device)
+        checks.isNotOrientationNatural()
         actions {
-            setOrientationNatural(device)
+            setOrientationNatural()
             sleep(5000)
         }
-        checks.isOrientationNatural(device)
+        checks.isOrientationNatural()
     }
 
     @Test
@@ -108,7 +108,7 @@ class TestClassWithDSL : AllureSupportTest() {
             device.network.enable()
         }.after { device.network.enable() }.run {
             actions {
-                click(OnboardingScreen.skipBtn, "btn Skip")
+                click(OnboardingScreen.skipBtn)
                 step("Find In The News block and click to $EXPLORE_SCREEN_ITEM item") {
                     ExploreScreen.items.childWith<InTheNewsViewItem> {
                         withDescendant {
@@ -117,15 +117,15 @@ class TestClassWithDSL : AllureSupportTest() {
                     }.perform {
                         step("Swipe to $EXPLORE_SCREEN_ITEM item") {
                             items.childAt<TabNewsItemView>(EXPLORE_SCREEN_ITEM) {
-                                click(this, "to $EXPLORE_SCREEN_ITEM item of TabNews")
+                                click(this)
                             }
                         }
                     }
                 }
                 step("Find $ARTICLES_SCREEN_ITEM article") {
                     ArticlesScreen.items.childAt<ListCardItemViewItem>(ARTICLES_SCREEN_ITEM) {
-                        disableNetwork(device)
-                        click(this, "to $ARTICLES_SCREEN_ITEM item of article")
+                        disableNetwork()
+                        click(this)
                     }
                 }
 
@@ -133,19 +133,19 @@ class TestClassWithDSL : AllureSupportTest() {
 
             ErrorScreen {
                 checks {
-                    isDisplayed(errorIcon, "Check error icon")
-                    isDisplayed(errorText, "Check error text")
-                    isDisplayed(errorBtn, "Check error btn")
+                    isDisplayed(errorIcon)
+                    isDisplayed(errorText)
+                    isDisplayed(errorBtn)
                 }
             }
 
             actions {
                 enableNetwork(device)
-                click(ErrorScreen.errorBtn, "to Retry button")
+                click(ErrorScreen.errorBtn)
             }
 
             checks {
-                isCompletelyDisplayed(WebViewScreen.webView, "Check page view")
+                isCompletelyDisplayed(WebViewScreen.webView)
             }
 
         }
