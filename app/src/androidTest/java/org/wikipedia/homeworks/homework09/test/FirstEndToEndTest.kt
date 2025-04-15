@@ -1,7 +1,6 @@
 package org.wikipedia.homeworks.homework09.test
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.homeworks.AllureSupportTest
@@ -12,6 +11,10 @@ import org.wikipedia.homeworks.homework09.items.subitems.TabNewsItemView
 import org.wikipedia.homeworks.homework09.screen.ArticlesScreen
 import org.wikipedia.homeworks.homework09.screen.WebViewScreen
 import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
+import org.wikipedia.homeworks.homework20.tools.customPerform
+import org.wikipedia.homeworks.homework21.tools.CustomViewAssertion
+import org.wikipedia.homeworks.homework21.tools.CustomViewAction
+import org.wikipedia.homeworks.homework21.extentions.customCheck
 import org.wikipedia.main.MainActivity
 
 const val EXPLORE_SCREEN_ITEM = 3
@@ -24,7 +27,8 @@ class FirstEndToEndTest : AllureSupportTest() {
     @Test
     fun inTheNewsTest() = run {
         step("Click skip button on onboarding screen") {
-            OnboardingScreen.skipBtn.click()
+            OnboardingScreen.skipBtn.customCheck(CustomViewAssertion("Skip"))
+            OnboardingScreen.skipBtn.customPerform(CustomViewAction())
         }
         step("Find In The News block and click to $EXPLORE_SCREEN_ITEM item") {
             ExploreScreen.items.childWith<InTheNewsViewItem> {

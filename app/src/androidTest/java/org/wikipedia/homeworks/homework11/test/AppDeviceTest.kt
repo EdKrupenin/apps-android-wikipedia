@@ -1,7 +1,6 @@
 package org.wikipedia.homeworks.homework11.test
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
@@ -16,6 +15,7 @@ import org.wikipedia.homeworks.homework09.screen.WebViewScreen
 import org.wikipedia.homeworks.homework09.test.ARTICLES_SCREEN_ITEM
 import org.wikipedia.homeworks.homework09.test.EXPLORE_SCREEN_ITEM
 import org.wikipedia.homeworks.homework11.screen.ErrorScreen
+import org.wikipedia.homeworks.homework21.extentions.hasAnyDrawable
 import org.wikipedia.main.MainActivity
 import java.util.Locale
 
@@ -71,6 +71,7 @@ class AppDeviceTest : AllureSupportTest() {
         }
         step("Check Toolbar is displayed") {
             ExploreScreen.toolbarTitle.isDisplayed()
+            ExploreScreen.toolbarTitle.hasAnyDrawable()
         }
     }
 

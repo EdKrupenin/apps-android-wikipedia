@@ -8,10 +8,11 @@ import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.homeworks.homework08.screen.OnboardingScreen.withParent
 import org.wikipedia.homeworks.homework20.items.subitems.TabNewsItemView
 import org.wikipedia.homeworks.homework20.tools.invokeAtIndex
 import org.wikipedia.homeworks.homework20.tools.name
-import org.wikipedia.homeworks.homework20.tools.withParent
+//import org.wikipedia.homeworks.homework20.tools.withParent
 
 class InTheNewsViewItem(matcher: Matcher<View>) : KRecyclerItem<InTheNewsViewItem>(matcher) {
     val header by lazy {

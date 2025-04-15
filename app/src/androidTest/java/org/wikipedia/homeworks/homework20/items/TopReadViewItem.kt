@@ -8,8 +8,9 @@ import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
 import org.wikipedia.homeworks.homework07.item.ListCardItemViewItem
+import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew.withParent
 import org.wikipedia.homeworks.homework20.tools.name
-import org.wikipedia.homeworks.homework20.tools.withParent
+import org.wikipedia.homeworks.homework20.tools.NamedKScreen
 
 class TopReadViewItem(matcher: Matcher<View>) : KRecyclerItem<TopReadViewItem>(matcher) {
     val headerText by lazy {
