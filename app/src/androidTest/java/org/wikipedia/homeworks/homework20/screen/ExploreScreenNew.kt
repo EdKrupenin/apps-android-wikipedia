@@ -14,6 +14,7 @@ import org.wikipedia.homeworks.homework20.tools.NamedKScreen
 import org.wikipedia.homeworks.homework20.tools.invokeAtDescendantText
 import org.wikipedia.homeworks.homework20.tools.name
 import org.wikipedia.homeworks.homework20.tools.invokeAtIndex
+import org.wikipedia.homeworks.homework22.extention.invokeByID
 
 
 object ExploreScreenNew : NamedKScreen<ExploreScreenNew>() {
@@ -39,8 +40,14 @@ object ExploreScreenNew : NamedKScreen<ExploreScreenNew>() {
         }).name(withParent("List of block"))
     }
 
-    fun topReadItem(index: Int, function: TopReadViewItem.() -> Unit) {
-        items.invokeAtIndex(index, function)
+    fun announcementItemByID(targetIndex: Int, function: TopReadViewItem.() -> Unit) {
+        items.invokeByID(
+            targetIndex = targetIndex,
+            targetID = R.id.view_announcement_text,
+            blockName = "Announcement Card",
+            limiter = (4 * targetIndex).coerceAtLeast(5),
+            function = function
+        )
     }
 
     fun topReadItem(function: TopReadViewItem.() -> Unit) {
