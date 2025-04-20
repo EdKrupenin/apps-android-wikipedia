@@ -7,21 +7,29 @@ import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KTextView
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.homeworks.homework20.tools.name
+import org.wikipedia.homeworks.homework20.tools.withParent
 
 class NewsCardViewItem(matcher: Matcher<View>) : KRecyclerItem<NewsCardViewItem>(matcher) {
-    val headerText = KTextView(matcher){
-        withId(R.id.view_card_header_title)
+    val headerText by lazy {
+        KTextView(matcher) {
+            withId(R.id.view_card_header_title)
+        }.name(withParent("day Header Text"))
     }
-    val headerMenu = KImageView(matcher) {
-        withId(R.id.view_list_card_header_menu)
+    val headerMenu by lazy {
+        KImageView(matcher) {
+            withId(R.id.view_list_card_header_menu)
+        }.name(withParent("day Header Text"))
     }
 
-    val newsCardItems = KRecyclerView(
-        builder = {
-            withId(R.id.news_cardview_recycler_view)
-        },
-        itemTypeBuilder = {
-            itemType(::NewsItemViewItem)
-        }
-    )
+    val newsCardItems by lazy {
+        KRecyclerView(
+            builder = {
+                withId(R.id.news_cardview_recycler_view)
+            },
+            itemTypeBuilder = {
+                itemType(::NewsItemViewItem)
+            }
+        ).name(withParent("day Header Text"))
+    }
 }

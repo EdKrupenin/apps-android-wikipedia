@@ -5,9 +5,11 @@ import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 import io.github.kakaocup.kakao.check.CheckableAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
+import io.github.kakaocup.kakao.image.ImageViewAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import io.github.kakaocup.kakao.web.WebAssertions
 import org.wikipedia.homeworks.homework20.tools.name
+import org.wikipedia.homeworks.homework21.extentions.hasAnyDrawable
 
 class Checks(private val testContext: TestContext<*>) : Steps<Checks>(testContext) {
     fun hasText(item: TextViewAssertions, text: String) {
@@ -25,6 +27,12 @@ class Checks(private val testContext: TestContext<*>) : Steps<Checks>(testContex
     fun hasAnyText(item: TextViewAssertions) {
         execute("${(item as BaseActions).name()} has any text") {
             item.hasAnyText()
+        }
+    }
+
+    fun hasAnyDrawable(item: ImageViewAssertions) {
+        execute("'${(item as BaseActions).name()}' has  any Image") {
+            item.hasAnyDrawable()
         }
     }
 
