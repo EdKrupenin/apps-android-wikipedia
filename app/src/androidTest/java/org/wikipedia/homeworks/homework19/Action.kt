@@ -8,6 +8,10 @@ import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.web.WebActions
 import org.wikipedia.homeworks.homework20.tools.name
 
+// Action должен принимать класс с шагами в классе должны быть методы которые предают только имена и
+// принимают итемы,
+// а наследоватся от класса класса с dsl
+
 class Action(private val testContext: TestContext<*>) : Steps<Action>(testContext) {
 
     fun click(item: BaseActions) {

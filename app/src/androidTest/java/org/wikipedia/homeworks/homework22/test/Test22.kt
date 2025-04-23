@@ -1,6 +1,7 @@
 package org.wikipedia.homeworks.homework22.test
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.homeworks.AllureSupportTest
@@ -17,6 +18,7 @@ import org.wikipedia.main.MainActivity
 class Test22 : AllureSupportTest() {
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
+
 
     @Test
     fun simpleTest() {
