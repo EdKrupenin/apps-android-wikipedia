@@ -7,6 +7,7 @@ import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.web.WebActions
 import org.wikipedia.homeworks.homework20.tools.name
+import org.wikipedia.homeworks.homework24.tools.KWebViewBaseElement
 
 // Action должен принимать класс с шагами в классе должны быть методы которые предают только имена и
 // принимают итемы,
@@ -73,6 +74,14 @@ class Action(private val testContext: TestContext<*>) : Steps<Action>(testContex
     fun scroll(item: WebActions) {
         execute("Scroll '${(item as BaseActions).name()}'") {
             item.scroll()
+        }
+    }
+
+    fun scroll(item: KWebViewBaseElement) {
+        execute("Scroll '${item.name()}'") {
+            testContext.flakySafely(150000) {
+                item.executeAction { scroll() }
+            }
         }
     }
 
