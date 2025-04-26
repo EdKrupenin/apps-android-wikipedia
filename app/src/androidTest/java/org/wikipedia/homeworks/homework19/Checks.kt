@@ -10,6 +10,7 @@ import io.github.kakaocup.kakao.text.TextViewAssertions
 import io.github.kakaocup.kakao.web.WebAssertions
 import org.wikipedia.homeworks.homework20.tools.name
 import org.wikipedia.homeworks.homework21.extentions.hasAnyDrawable
+import org.wikipedia.homeworks.homework24.tools.KWebViewBaseElement
 
 class Checks(private val testContext: TestContext<*>) : Steps<Checks>(testContext) {
     fun hasText(item: TextViewAssertions, text: String) {
@@ -21,6 +22,12 @@ class Checks(private val testContext: TestContext<*>) : Steps<Checks>(testContex
     fun hasText(item: WebAssertions, text: String) {
         execute("${(item as BaseActions).name()} has a text: '$text'") {
             item.hasText(text)
+        }
+    }
+
+    fun hasText(item: KWebViewBaseElement<*>, text: String) {
+        execute("'${item.name()}' has a text: '$text'") {
+            item.executeAction { hasText(text) }
         }
     }
 

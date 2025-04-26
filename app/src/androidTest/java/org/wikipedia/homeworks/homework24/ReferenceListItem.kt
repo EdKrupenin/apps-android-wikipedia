@@ -9,11 +9,12 @@ class ReferenceListItem(kWebView: KWebView, xPath: String) :
     override val self: ReferenceListItem = this
 
     val index by lazy {
-        child<KWebViewElement>("/li/div/div[1]")
-
+        child<KWebViewElement>("/div/div[@class='pcs-ref-backlink-container']")
+            .name(withParent("Индекс ссылки"))
     }
 
     val content by lazy {
-        child<KWebViewElement>("/li/div/div[2]")
+        child<KWebViewElement>("/div/div[@class='pcs-ref-body']")
+            .name(withParent("Заголовок ссылки"))
     }
 }
