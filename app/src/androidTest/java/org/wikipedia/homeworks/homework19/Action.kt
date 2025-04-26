@@ -29,6 +29,7 @@ class Action(private val testContext: TestContext<*>) : Steps<Action>(testContex
     }
 
     fun click(item: KWebViewBaseElement<*>) {
+        scroll(item)
         execute("Click on '${item.name()}'") {
             item.executeAction { click() }
         }

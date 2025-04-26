@@ -15,7 +15,7 @@ import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew
 import org.wikipedia.homeworks.homework24.screen.WebViewDSLScreen
 
 const val REFERENCE_INDEX = 2
-const val REFERENCE_TITLE = "Reference"
+const val REFERENCE_TITLE = "References"
 const val REFERENCE_INDEX_TEXT = "[${REFERENCE_INDEX}]"
 
 class WebViewTest : AllureSupportTest() {
@@ -40,21 +40,13 @@ class WebViewTest : AllureSupportTest() {
         WebViewDSLScreen {
             actions {
                 referenceTitle {
-                    scroll(this)
                     click(this)
                 }
             }
             checks {
                 hasText(referenceTitle, REFERENCE_TITLE)
-            }
-            actions {
                 referenceItem(REFERENCE_INDEX) {
-                    scroll(this)
-                }
-            }
-            checks {
-                referenceItem(REFERENCE_INDEX) {
-                    hasText(this, REFERENCE_INDEX_TEXT)
+                    containsText(this, REFERENCE_INDEX_TEXT)
                 }
             }
 

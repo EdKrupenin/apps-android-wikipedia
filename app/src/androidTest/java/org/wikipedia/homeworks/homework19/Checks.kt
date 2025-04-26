@@ -43,6 +43,12 @@ class Checks(private val testContext: TestContext<*>) : Steps<Checks>(testContex
         }
     }
 
+    fun containsText(item: KWebViewBaseElement<*>, text: String) {
+        execute("${item.name()} contains a text: '$text'") {
+            item.executeAction { containsText(text) }
+        }
+    }
+
     fun containsText(item: UiTextViewAssertions, text: String) {
         execute("${(item as BaseActions).name()} contains a text: '$text'") {
             item.containsText(text)
