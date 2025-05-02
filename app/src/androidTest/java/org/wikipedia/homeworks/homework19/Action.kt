@@ -1,5 +1,6 @@
 package org.wikipedia.homeworks.homework19
 
+import androidx.test.uiautomator.UiObject
 import com.kaspersky.kaspresso.device.Device
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 import io.github.kakaocup.kakao.check.CheckableActions
@@ -18,6 +19,12 @@ class Action(private val testContext: TestContext<*>) : Steps<Action>(testContex
 
     fun click(item: BaseActions) {
         execute("Click on '${item.name()}'") {
+            item.click()
+        }
+    }
+
+    fun click(item: UiObject) {
+        execute("Click on 'UiObject'") {
             item.click()
         }
     }
@@ -44,6 +51,24 @@ class Action(private val testContext: TestContext<*>) : Steps<Action>(testContex
     fun enableNetwork(device: Device) {
         execute("Enable network") {
             device.network.enable()
+        }
+    }
+
+    fun pressBack() {
+        execute("Press Back") {
+            testContext.device.uiDevice.pressBack()
+        }
+    }
+
+    fun swipeUp() {
+        execute("Press Back") {
+            testContext.device.uiDevice.swipe(
+                testContext.device.uiDevice.displayWidth / 2,
+                testContext.device.uiDevice.displayHeight * 3 / 4,
+                testContext.device.uiDevice.displayWidth / 2,
+                testContext.device.uiDevice.displayHeight / 4,
+                30
+            )
         }
     }
 

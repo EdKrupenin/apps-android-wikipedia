@@ -7,6 +7,7 @@ import org.wikipedia.feed.topread.TopReadCardView
 import org.wikipedia.feed.view.FeedView
 import org.wikipedia.homeworks.homework07.item.AnnouncementCardViewItem
 import org.wikipedia.homeworks.homework07.item.DayHeaderCardViewItem
+import org.wikipedia.homeworks.homework07.item.FeaturedArticleCardViewItem
 import org.wikipedia.homeworks.homework07.item.NewsCardViewItem
 import org.wikipedia.homeworks.homework07.item.SearchCardViewItem
 import org.wikipedia.homeworks.homework20.items.InTheNewsViewItem
@@ -36,6 +37,7 @@ object ExploreScreenNew : NamedKScreen<ExploreScreenNew>() {
             itemType(::SearchCardViewItem)
             itemType(::AnnouncementCardViewItem)
             itemType(::DayHeaderCardViewItem)
+            itemType(::FeaturedArticleCardViewItem)
             itemType(::TopReadViewItem)
             itemType(::NewsCardViewItem)
             itemType(::InTheNewsViewItem)
@@ -67,6 +69,19 @@ object ExploreScreenNew : NamedKScreen<ExploreScreenNew>() {
             targetIndex = targetIndex,
             targetID = R.id.day_header_text,
             blockName = "Day header card",
+            limiter = (20 * targetIndex).coerceAtLeast(5),
+            function = function
+        )
+    }
+
+    fun featuredArticleItemByID(
+        targetIndex: Int,
+        function: FeaturedArticleCardViewItem.() -> Unit
+    ) {
+        items.invokeByID(
+            targetIndex = targetIndex,
+            targetID = R.id.articleTitle,
+            blockName = "Featured Article",
             limiter = (20 * targetIndex).coerceAtLeast(5),
             function = function
         )

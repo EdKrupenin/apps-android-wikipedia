@@ -1,4 +1,4 @@
-package org.wikipedia.homeworks.homework26
+package org.wikipedia.homeworks.homework26.tools
 
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 import com.kaspersky.kaspresso.testcases.models.info.StepInfo

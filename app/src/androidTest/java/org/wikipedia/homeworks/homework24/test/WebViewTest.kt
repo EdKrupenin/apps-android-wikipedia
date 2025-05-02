@@ -13,7 +13,7 @@ import org.wikipedia.homeworks.homework19.actions
 import org.wikipedia.homeworks.homework19.checks
 import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew
 import org.wikipedia.homeworks.homework24.screen.WebViewDSLScreen
-import org.wikipedia.homeworks.homework26.CloseCustomizeYourToolbarSS
+import org.wikipedia.homeworks.homework26.tools.CloseCustomizeYourToolbarSS
 
 const val REFERENCE_INDEX = 2
 const val REFERENCE_TITLE = "References"

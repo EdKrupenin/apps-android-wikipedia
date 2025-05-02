@@ -1,4 +1,4 @@
-package org.wikipedia.homeworks.homework26
+package org.wikipedia.homeworks.homework26.tools
 
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiSelector

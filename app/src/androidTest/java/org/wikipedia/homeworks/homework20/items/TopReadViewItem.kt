@@ -10,7 +10,7 @@ import org.wikipedia.R
 import org.wikipedia.homeworks.homework07.item.ListCardItemViewItem
 import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew.withParent
 import org.wikipedia.homeworks.homework20.tools.name
-import org.wikipedia.homeworks.homework20.tools.NamedKScreen
+import org.wikipedia.homeworks.homework22.extention.invokeByID
 
 class TopReadViewItem(matcher: Matcher<View>) : KRecyclerItem<TopReadViewItem>(matcher) {
     val headerText by lazy {
