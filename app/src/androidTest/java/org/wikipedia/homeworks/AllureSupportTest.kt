@@ -10,6 +10,7 @@ import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import com.kaspersky.kaspresso.testcases.models.info.StepInfo
 import com.kaspersky.kaspresso.testcases.models.info.TestInfo
+import org.junit.Rule
 
 abstract class AllureSupportTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.withForcedAllureSupport().apply {
@@ -19,7 +20,9 @@ abstract class AllureSupportTest : TestCase(
         stepWatcherInterceptors.add(FailOnlyScreenshotStepInterceptor(screenshots))
         testRunWatcherInterceptors.add(SuccessFinaleScreenshotTestInterceptor(screenshots))
     }
-)
+) {
+
+}
 
 class SuccessFinaleScreenshotTestInterceptor(
     private val screenshots: Screenshots
