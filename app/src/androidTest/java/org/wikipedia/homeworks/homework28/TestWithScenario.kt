@@ -4,11 +4,14 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.uiautomator.UiSelector
 import org.junit.Rule
 import org.junit.Test
+import org.wikipedia.BuildConfig
 import org.wikipedia.homeworks.AllureSupportTest
 import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
 import org.wikipedia.homeworks.homework19.actions
 import org.wikipedia.homeworks.homework19.checks
 import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew
+import org.wikipedia.homeworks.homework29.Credentials
+import org.wikipedia.homeworks.homework29.Users
 import org.wikipedia.main.MainActivity
 
 class TestWithScenario : AllureSupportTest() {
@@ -34,7 +37,11 @@ class TestWithScenario : AllureSupportTest() {
 
     @Test
     fun test() = run {
+        BuildConfig.HOME_WORK_NUMBER
+        val login = Users.alfaLogin
+        val password = Credentials.getPassword(login)
         actions {
+            autorize(Users.alfaLogin)
             click(OnboardingScreen.skipBtn)
             ExploreScreenNew.featuredArticleItemByID(0) {
                 click(this.articleTitle)

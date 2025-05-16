@@ -7,15 +7,26 @@ import io.github.kakaocup.kakao.check.CheckableActions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.web.WebActions
+import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew
 import org.wikipedia.homeworks.homework20.tools.name
 import org.wikipedia.homeworks.homework24.tools.KWebViewBaseElement
 import org.wikipedia.homeworks.homework24.tools.KWebViewElement
+import org.wikipedia.homeworks.homework29.Credentials
 
 // Action должен принимать класс с шагами в классе должны быть методы которые предают только имена и
 // принимают итемы,
 // а наследоватся от класса класса с dsl
 
 class Action(private val testContext: TestContext<*>) : Steps<Action>(testContext) {
+
+    fun autorize(user: String) {
+        execute("Пытается авторизоватся как пользователь $user") {
+            val password = Credentials.getPassword(user)
+            ExploreScreenNew.user.typeText(user)
+            ExploreScreenNew.password.typeText(password)
+            ExploreScreenNew.loginBtn.click()
+        }
+    }
 
     fun click(item: BaseActions) {
         execute("Click on '${item.name()}'") {
