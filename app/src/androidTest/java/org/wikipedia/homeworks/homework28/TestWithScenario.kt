@@ -5,10 +5,10 @@ import androidx.test.uiautomator.UiSelector
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.BuildConfig
+import org.wikipedia.R
 import org.wikipedia.homeworks.AllureSupportTest
 import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
 import org.wikipedia.homeworks.homework19.actions
-import org.wikipedia.homeworks.homework19.checks
 import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew
 import org.wikipedia.homeworks.homework29.Credentials
 import org.wikipedia.homeworks.homework29.Users
@@ -41,13 +41,11 @@ class TestWithScenario : AllureSupportTest() {
         val login = Users.alfaLogin
         val password = Credentials.getPassword(login)
         actions {
-            autorize(Users.alfaLogin)
-            click(OnboardingScreen.skipBtn)
+            authorize(Users.EduardoKru)
             ExploreScreenNew.featuredArticleItemByID(0) {
                 click(this.articleTitle)
             }
-            val saveBnt = device.uiDevice.findObject(UiSelector().textContains("Save"))
-            click(saveBnt)
+            click(R.string.nav_item_saved)
             sleep(1000L)
             pressBack()
             ExploreScreenNew.inTheNewsItem {
@@ -62,7 +60,7 @@ class TestWithScenario : AllureSupportTest() {
             ExploreScreenNew.featuredArticleItemByID(1) {
                 click(this.articleTitle)
             }
-            click(saveBnt)
+            click(R.string.nav_item_saved)
             sleep(1000L)
             pressBack()
             val savedBnt = device.uiDevice.findObject(UiSelector().textContains("Saved"))

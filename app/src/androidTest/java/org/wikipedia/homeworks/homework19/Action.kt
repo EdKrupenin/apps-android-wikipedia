@@ -1,36 +1,70 @@
 package org.wikipedia.homeworks.homework19
 
+import androidx.annotation.StringRes
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiObject
+import androidx.test.uiautomator.UiSelector
 import com.kaspersky.kaspresso.device.Device
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
 import io.github.kakaocup.kakao.check.CheckableActions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.edit.EditableActions
 import io.github.kakaocup.kakao.web.WebActions
-import org.wikipedia.homeworks.homework20.screen.ExploreScreenNew
+import org.wikipedia.R
+import org.wikipedia.homeworks.homework08.screen.OnboardingScreen
 import org.wikipedia.homeworks.homework20.tools.name
 import org.wikipedia.homeworks.homework24.tools.KWebViewBaseElement
-import org.wikipedia.homeworks.homework24.tools.KWebViewElement
+import org.wikipedia.homeworks.homework29.LoginScreen
 import org.wikipedia.homeworks.homework29.Credentials
 
 // Action должен принимать класс с шагами в классе должны быть методы которые предают только имена и
 // принимают итемы,
 // а наследоватся от класса класса с dsl
-
 class Action(private val testContext: TestContext<*>) : Steps<Action>(testContext) {
 
-    fun autorize(user: String) {
+    private fun getTextFromRes(@StringRes resId: Int): String {
+        return InstrumentationRegistry
+            .getInstrumentation()
+            .targetContext
+            .getString(resId)
+    }
+
+    private fun findByText(name: String): UiObject {
+        return testContext
+            .device
+            .uiDevice
+            .findObject(
+                UiSelector()
+                    .textContains(name)
+            )
+    }
+
+    fun authorize(user: String) {
         execute("Пытается авторизоватся как пользователь $user") {
             val password = Credentials.getPassword(user)
-            ExploreScreenNew.user.typeText(user)
-            ExploreScreenNew.password.typeText(password)
-            ExploreScreenNew.loginBtn.click()
+            OnboardingScreen.skipBtn.click()
+            val savedBnt = findByText(getTextFromRes(R.string.nav_item_more))
+            savedBnt.click()
+            val enterTo = findByText(getTextFromRes(R.string.main_drawer_login))
+            enterTo.click()
+            val loginBtn = findByText(getTextFromRes(R.string.create_account_login))
+            loginBtn.click()
+            LoginScreen.usernameEditText.typeText(user)
+            LoginScreen.passwordEditText.typeText(password)
+            LoginScreen.loginButton.click()
+            testContext.device.permissions.allowViaDialog()
         }
     }
 
     fun click(item: BaseActions) {
         execute("Click on '${item.name()}'") {
             item.click()
+        }
+    }
+
+    fun click(@StringRes resId: Int) {
+        execute("Click on 'object by UI automator'") {
+            findByText(getTextFromRes(resId)).click()
         }
     }
 
